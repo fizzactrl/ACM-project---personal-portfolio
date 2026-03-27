@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Syeda Fizza Rizvi | Portfolio</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="sky"></div>
+  <div class="stars"></div>
+  <div class="scanlines"></div>
+  <div class="cursor-trail"></div>
+
+  <header class="topbar">
+    <div class="brand">
+  <img src="favicon.png" alt="logo">
+</div>
+    <nav>
+  <a href="index.html">About</a>
+  <a href="experience.html">Experience</a>
+  <a href="projects.html">Projects</a>
+  <a href="contact.html">Contact</a>
+</nav>
+  </header>
+
+  <main class="hero">
+    <div class="sun-glow sun-1"></div>
+    <div class="sun-glow sun-2"></div>
+    <div class="sun-glow sun-3"></div>
+
+    <section class="hero-content full-width">
+      <p class="pretitle">HEY! WELCOME TO MY PORTFOLIO</p>
+
+      <h1 class="main-heading name-animate">I'm Syeda Fizza Rizvi</h1>
+
+      <p class="subtitle">
+        Bachelor of Science in Applied Mathematics + Minor in Computer Science @ UT Dallas<br />
+        Academic Excellence Scholar • Dean's List Fall '25
+      </p>
+
+      <p class="description">
+        I’m a freshman undergraduate interested in artificial intelligence,
+        machine learning, and data-driven problem solving. I enjoy combining
+        mathematics, logic, and technology to build meaningful solutions.
+      </p>
+
+      <div class="button-group">
+        <a href="resume.pdf" target="_blank" class="btn btn-primary">VIEW RESUME</a>
+    
+      </div>
+
+      <div class="social-section">
+        <p>FIND ME AT</p>
+        <div class="socials">
+  <a href="https://github.com/fizzactrl" target="_blank" class="social-btn">
+    <i class="fab fa-github"></i>
+  </a>
+
+  <a href="https://linkedin.com/in/sy3dafizza" target="_blank" class="social-btn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <a href="sy3dafizza@gmail.com" class="social-btn">
+    <i class="fas fa-envelope"></i>
+  </a>
+</div>
+      </div>
+    </section>
+    
+  </main>
+
+
+
+  <script>
+  document.addEventListener("mousemove", (e) => {
+
+   const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll("nav a");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (scrollY >= sectionTop) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(a => {
+      a.classList.remove("active");
+      if (a.getAttribute("href") === "#" + current) {
+        a.classList.add("active");
+      }
+    });
+  });
+
+    const trail = document.createElement("div");
+    trail.className = "trail";
+
+    trail.style.left = e.clientX + "px";
+    trail.style.top = e.clientY + "px";
+
+    document.body.appendChild(trail);
+
+    setTimeout(() => {
+      trail.remove();
+    }, 700);
+  });
+</script>
+</body>
+</html>

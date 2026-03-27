@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Syeda Fizza Rizvi</title>
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="styles.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="sky"></div>
+<div class="stars"></div>
+<div class="scanlines"></div>
+<div class="sun-glow sun-1"></div>
+<div class="sun-glow sun-2"></div>
+<div class="sun-glow sun-3"></div>
+  <header class="topbar">
+    <div class="brand">
+      <img src="favicon.png" alt="logo">
+    </div>
+
+    <nav>
+      <a href="index.html">ABOUT</a>
+      <a href="experience.html">EXPERIENCE</a>
+      <a href="projects.html">PROJECTS</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+
+  <section class="contact-wrapper">
+    <h1 class="page-title">Contact</h1>
+
+    <div class="contact-card fade-in fade-delay-1">
+      <p class="contact-intro">
+        I’m always open to connecting, collaborating, and exploring new opportunities.
+        Feel free to reach out through any of the platforms below.
+      </p>
+
+      <div class="contact-icons">
+        <a href="https://github.com/fizzactrl" target="_blank" class="contact-icon" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/sy3dafizza" target="_blank" class="contact-icon" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+
+        <a href="mailto:sy3dafizza@gmail.com" class="contact-icon" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+
+      <div class="contact-details">
+        <p><span>Email:</span> sy3dafizza@gmail.com</p>
+        <p><span>GitHub:</span> github.com/fizzactrl</p>
+        <p><span>LinkedIn:</span> linkedin.com/in/sy3dafizza</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const trails = [];
+
+    document.addEventListener("mousemove", (e) => {
+      const trail = document.createElement("div");
+      trail.className = "trail";
+
+      trail.x = e.clientX;
+      trail.y = e.clientY;
+      trail.life = 1;
+
+      trail.style.left = trail.x + "px";
+      trail.style.top = trail.y + "px";
+
+      document.body.appendChild(trail);
+      trails.push(trail);
+    });
+
+    function animate() {
+      for (let i = 0; i < trails.length; i++) {
+        const t = trails[i];
+
+        t.life -= 0.03;
+
+        if (t.life <= 0) {
+          t.remove();
+          trails.splice(i, 1);
+          i--;
+          continue;
+        }
+
+        t.style.opacity = t.life;
+        t.style.transform = `translate(-50%, -50%) scale(${1 + (1 - t.life) * 1.5})`;
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>

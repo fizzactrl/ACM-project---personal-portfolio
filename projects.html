@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Syeda Fizza Rizvi</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sky"></div>
+<div class="stars"></div>
+<div class="scanlines"></div>
+<div class="sun-glow sun-1"></div>
+<div class="sun-glow sun-2"></div>
+<div class="sun-glow sun-3"></div>
+  <header class="topbar">
+    <div class="brand">
+      <img src="favicon.png" alt="logo">
+    </div>
+
+    <nav>
+      <a href="index.html">ABOUT</a>
+      <a href="experience.html">EXPERIENCE</a>
+      <a href="projects.html">PROJECTS</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+
+  <section class="projects-wrapper">
+    <h1 class="page-title">Projects</h1>
+
+    <div class="projects-section">
+      <div class="project-card fade-in fade-delay-1">
+        <h3>Comet Compass</h3>
+        <p class="project-org">HackAI Project • AI-Powered Campus Navigation • March 2026</p>
+
+        <p class="project-desc">
+          Comet Compass is an AI-powered campus navigation assistant designed to help students and visitors find locations around UT Dallas more easily. The idea was inspired by the confusion many freshmen and international students experience when trying to navigate a large campus.
+        </p>
+
+        <ul>
+          <li>Designed as a smart navigation experience with a futuristic, student-friendly interface</li>
+          <li>Focused on combining AI guidance with campus wayfinding to make navigation more intuitive</li>
+          <li>Explored features such as interactive directions, visual guidance, and a conversational assistant experience</li>
+          <li>Built as a hackathon concept centered on usability, accessibility, and innovation</li>
+        </ul>
+
+        <div class="project-tags">
+          <span>HackAI</span>
+          <span>AI</span>
+          <span>UI/UX</span>
+          <span>Campus Navigation</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-in fade-delay-2">
+        <h3>Gaussian Splatting Explorer</h3>
+        <p class="project-org">3D Visualization / Graphics Concept • Ongoing</p>
+
+        <p class="project-desc">
+          This project explores Gaussian Splatting, a modern 3D rendering technique that represents scenes using millions of tiny 3D Gaussian ellipsoids instead of relying on traditional meshes or voxel grids. It reflects my interest in combining math, computation, and visualization in emerging technologies.
+        </p>
+
+        <ul>
+          <li>Studied how 3D scenes can be represented through scattered Gaussian primitives</li>
+          <li>Focused on the mathematical and computational ideas behind real-time scene representation</li>
+          <li>Connected concepts from geometry, modeling, and rendering to modern visualization methods</li>
+          <li>Demonstrated curiosity in graphics, spatial computing, and next-generation 3D reconstruction</li>
+        </ul>
+
+        <div class="project-tags">
+          <span>3D Graphics</span>
+          <span>Gaussian Splatting</span>
+          <span>Visualization</span>
+          <span>Math + CS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const trails = [];
+
+    document.addEventListener("mousemove", (e) => {
+      const trail = document.createElement("div");
+      trail.className = "trail";
+
+      trail.x = e.clientX;
+      trail.y = e.clientY;
+      trail.life = 1;
+
+      trail.style.left = trail.x + "px";
+      trail.style.top = trail.y + "px";
+
+      document.body.appendChild(trail);
+      trails.push(trail);
+    });
+
+    function animate() {
+      for (let i = 0; i < trails.length; i++) {
+        const t = trails[i];
+
+        t.life -= 0.03;
+
+        if (t.life <= 0) {
+          t.remove();
+          trails.splice(i, 1);
+          i--;
+          continue;
+        }
+
+        t.style.opacity = t.life;
+        t.style.transform = `translate(-50%, -50%) scale(${1 + (1 - t.life) * 1.5})`;
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
